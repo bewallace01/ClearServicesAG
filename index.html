@@ -256,10 +256,14 @@ footer{
   animation:heroIn 0.75s 0.28s cubic-bezier(0.16,1,0.3,1) both;
 }
 
-/* excavator SVG – right side of hero */
+/* excavator – right side of hero (external SVG asset) */
 .hero-excavator{
   position:absolute;bottom:90px;right:2%;z-index:2;
   animation:heroIn 0.9s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-excavator-img{
+  display:block;width:min(360px,40vw);height:auto;
+  filter:drop-shadow(0 12px 20px rgba(0,0,0,0.2));
 }
 
 /* Stats bar */
@@ -689,42 +693,9 @@ footer{
       </div>
     </div>
 
-    <!-- Excavator illustration -->
+    <!-- Excavator illustration — v0Z0m01.svg themed to site gold -->
     <div class="hero-excavator">
-      <svg viewBox="0 0 340 230" width="360" xmlns="http://www.w3.org/2000/svg">
-        <!-- Ground shadow -->
-        <ellipse cx="160" cy="218" rx="130" ry="8" fill="rgba(0,0,0,0.2)"/>
-        <!-- Tracks -->
-        <rect x="20" y="168" width="210" height="30" rx="15" fill="#f5c200"/>
-        <rect x="30" y="173" width="190" height="20" rx="10" fill="#c9a000"/>
-        <circle cx="42" cy="183" r="13" fill="#f5c200" stroke="#c9a000" stroke-width="2"/>
-        <circle cx="218" cy="183" r="13" fill="#f5c200" stroke="#c9a000" stroke-width="2"/>
-        <circle cx="100" cy="187" r="8" fill="#a88000"/>
-        <circle cx="130" cy="188" r="8" fill="#a88000"/>
-        <circle cx="160" cy="187" r="8" fill="#a88000"/>
-        <!-- Body -->
-        <rect x="55" y="112" width="140" height="58" rx="6" fill="#f5c200"/>
-        <!-- Cab -->
-        <rect x="65" y="116" width="90" height="48" rx="4" fill="#1a4fbb"/>
-        <rect x="70" y="120" width="78" height="38" rx="3" fill="rgba(255,255,255,0.18)"/>
-        <!-- Boom arm -->
-        <rect x="178" y="102" width="20" height="66" rx="5" fill="#c9a000" transform="rotate(-18 188 135)"/>
-        <!-- Stick -->
-        <rect x="208" y="58" width="15" height="62" rx="4" fill="#f5c200" transform="rotate(-38 215 89)"/>
-        <!-- Forearm -->
-        <rect x="244" y="20" width="13" height="58" rx="4" fill="#c9a000" transform="rotate(-68 250 49)"/>
-        <!-- Bucket -->
-        <path d="M266 4 L292 18 L284 44 L259 36 Z" fill="#f5c200" stroke="#c9a000" stroke-width="1.5"/>
-        <path d="M259 36 L284 44 L280 56 L256 48 Z" fill="#c9a000"/>
-        <line x1="262" y1="52" x2="257" y2="64" stroke="#f5c200" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="272" y1="55" x2="268" y2="67" stroke="#f5c200" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="281" y1="52" x2="278" y2="64" stroke="#f5c200" stroke-width="3.5" stroke-linecap="round"/>
-        <!-- Hydraulics -->
-        <line x1="188" y1="108" x2="218" y2="74" stroke="rgba(255,255,255,0.25)" stroke-width="5" stroke-linecap="round"/>
-        <line x1="222" y1="68" x2="252" y2="32" stroke="rgba(255,255,255,0.2)" stroke-width="4" stroke-linecap="round"/>
-        <!-- Gold accent line (from logo) -->
-        <line x1="170" y1="95" x2="270" y2="22" stroke="#f5c200" stroke-width="2.5" stroke-dasharray="6 5" opacity="0.45"/>
-      </svg>
+      <img src="v0Z0m01.svg" width="360" height="360" alt="" class="hero-excavator-img" decoding="async" aria-hidden="true">
     </div>
 
     <!-- Stats bar -->
@@ -747,7 +718,7 @@ footer{
     </div>
     <div class="svc-grid">
       <div class="svc-card reveal" onclick="showPage('services')"><span class="svc-num">01</span><span class="svc-icon"><svg class="ico-svg" aria-hidden="true"><use href="#i-trees"/></svg></span><div class="svc-title">Tree Removal</div><p class="svc-desc">Safe removal of any size tree, including emergency storm response. We leave your property clean.</p></div>
-      <div class="svc-card reveal d1" onclick="showPage('services')"><span class="svc-num">02</span><span class="svc-icon"><svg class="ico-svg" aria-hidden="true"><use href="#i-truck"/></svg></span><div class="svc-title">Land Clearing</div><p class="svc-desc">Full brush, vegetation, and debris clearing for lots, farms, and commercial sites.</p></div>
+      <div class="svc-card reveal d1" onclick="showPage('services')"><span class="svc-num">02</span><span class="svc-icon"><svg class="ico-svg" aria-hidden="true"><use href="#i-land-plot"/></svg></span><div class="svc-title">Land Clearing</div><p class="svc-desc">Full brush, vegetation, and debris clearing for lots, farms, and commercial sites.</p></div>
       <div class="svc-card reveal d2" onclick="showPage('services')"><span class="svc-num">03</span><span class="svc-icon"><svg class="ico-svg" aria-hidden="true"><use href="#i-shovel"/></svg></span><div class="svc-title">Excavation & Grading</div><p class="svc-desc">Precision digging and grading for drainage, foundations, and build-ready sites.</p></div>
       <div class="svc-card reveal d3" onclick="showPage('services')"><span class="svc-num">04</span><span class="svc-icon"><svg class="ico-svg" aria-hidden="true"><use href="#i-trash-2"/></svg></span><div class="svc-title">Structure Demolition</div><p class="svc-desc">Total teardown with full debris haul-off. Commercial and residential — clean slate ready.</p></div>
     </div>
