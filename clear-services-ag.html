@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clear Services AG, LLC – Land Clearing & Tree Services | Newton Grove, NC</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --royal: #1a4fbb;
+    --royal-dark: #0f3490;
+    --royal-deep: #0a2260;
+    --gold: #f5c200;
+    --gold-dark: #d4a700;
+    --white: #ffffff;
+    --off-white: #f4f6fb;
+    --gray: #6b7280;
+    --dark: #0d1b3e;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 34, 96, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem;
+    height: 72px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700;
+    letter-spacing: 1px; color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .gear-icon {
+    width: 36px; height: 36px; fill: var(--gold);
+    animation: spin 12s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+    font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--dark);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+    padding: 0.6rem 1.4rem; border: none; cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--royal-deep);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 72px 0 0;
+  }
+
+  /* Animated diagonal stripes background */
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.018) 60px,
+        rgba(255,255,255,0.018) 62px
+      );
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,79,187,0.5) 0%, transparent 70%);
+  }
+
+  /* Big gear watermark */
+  .gear-bg {
+    position: absolute; right: -120px; top: 50%;
+    transform: translateY(-50%);
+    width: 680px; height: 680px;
+    opacity: 0.06;
+    animation: spin-slow 40s linear infinite;
+  }
+  @keyframes spin-slow { to { transform: translateY(-50%) rotate(360deg); } }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 4rem 0 5rem;
+    max-width: 700px;
+    animation: fadeUp 0.8s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,194,0,0.15);
+    border: 1px solid rgba(245,194,0,0.4);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.8rem; letter-spacing: 3px;
+    text-transform: uppercase; padding: 6px 14px;
+    margin-bottom: 1.5rem;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); display: inline-block; }
+
+  .hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 5.8rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title .line2 { color: var(--gold); display: block; }
+
+  .gold-bar {
+    width: 80px; height: 4px;
+    background: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem; font-weight: 300; line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+  }
+
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem; letter-spacing: 2px;
+    text-transform: uppercase; padding: 1rem 2rem;
+    border: none; cursor: pointer; text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(245,194,0,0.3);
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,194,0,0.4); }
+
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 1rem; letter-spacing: 2px;
+    text-transform: uppercase; padding: 1rem 2rem;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center;
+    background: rgba(10,34,96,0.9);
+    border-top: 2px solid rgba(245,194,0,0.3);
+    animation: fadeUp 0.8s 0.3s ease both;
+    opacity: 0;
+  }
+  .stat-item {
+    flex: 1; max-width: 220px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+
+  /* ── SERVICES ── */
+  #services {
+    background: var(--off-white);
+    padding: 6rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  #services::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--royal) 0%, var(--gold) 50%, var(--royal) 100%);
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--royal);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; display: block; width: 40px; height: 2px; background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700; text-transform: uppercase;
+    color: var(--dark); line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .section-title .accent { color: var(--royal); }
+
+  .section-intro {
+    color: var(--gray); font-size: 1.05rem; line-height: 1.7;
+    max-width: 540px; margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border-bottom: 3px solid transparent;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,79,187,0.15); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .svc-icon {
+    font-size: 2.8rem; margin-bottom: 1.2rem; display: block;
+    filter: grayscale(0);
+  }
+  .svc-num {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'Oswald', sans-serif; font-size: 4rem; font-weight: 700;
+    color: rgba(26,79,187,0.06); line-height: 1; user-select: none;
+  }
+  .svc-title {
+    font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 600;
+    text-transform: uppercase; color: var(--dark);
+    margin-bottom: 0.75rem; letter-spacing: 0.5px;
+  }
+  .svc-desc {
+    font-size: 0.92rem; line-height: 1.7; color: var(--gray);
+  }
+
+  /* ── WHY US ── */
+  #why {
+    background: var(--royal-deep);
+    padding: 6rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .why-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .why-graphic {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hexgrid { width: 100%; max-width: 380px; }
+
+  .why-points { display: flex; flex-direction: column; gap: 2rem; }
+  .why-point { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .why-icon-wrap {
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: rgba(245,194,0,0.12);
+    border: 1px solid rgba(245,194,0,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .why-point-title {
+    font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .why-point-desc { font-size: 0.9rem; line-height: 1.65; color: rgba(255,255,255,0.65); }
+
+  /* ── SERVICE AREA MAP ── */
+  #area {
+    background: var(--dark);
+    padding: 6rem 4rem;
+    text-align: center;
+  }
+  #area .section-label { justify-content: center; }
+  #area .section-label::after { display: none; }
+  #area .section-title { color: var(--white); text-align: center; margin: 0 auto 1rem; }
+  #area .section-intro { margin: 0 auto 3rem; text-align: center; color: rgba(255,255,255,0.55); }
+
+  .area-tags {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+    max-width: 700px; margin: 0 auto 3rem;
+  }
+  .area-tag {
+    background: rgba(26,79,187,0.3);
+    border: 1px solid rgba(26,79,187,0.6);
+    color: rgba(255,255,255,0.8);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;
+    padding: 0.5rem 1.2rem;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+  .area-tag:hover { background: var(--royal); border-color: var(--gold); color: var(--gold); }
+  .area-tag.anchor { background: var(--royal); border-color: var(--gold); color: var(--gold); }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    background: var(--royal);
+    padding: 6rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  #testimonials::before {
+    content: '"';
+    position: absolute; top: -2rem; left: 3rem;
+    font-family: 'Oswald', sans-serif; font-size: 20rem;
+    color: rgba(255,255,255,0.05); line-height: 1;
+    pointer-events: none;
+  }
+
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+  }
+  .testimonial-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .testimonial-card:hover { background: rgba(255,255,255,0.12); }
+  .stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+  .t-text { font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-style: italic; }
+  .t-author { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; }
+
+  /* ── CTA BAND ── */
+  #cta {
+    background: var(--gold);
+    padding: 4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .cta-text .cta-title {
+    font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700; text-transform: uppercase; color: var(--dark);
+    line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .cta-text .cta-sub { font-size: 1rem; color: rgba(0,0,0,0.6); }
+  .cta-phone {
+    font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--dark);
+    text-decoration: none; letter-spacing: -1px;
+    transition: opacity 0.2s;
+  }
+  .cta-phone:hover { opacity: 0.75; }
+  .btn-dark {
+    background: var(--dark); color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem; letter-spacing: 2px;
+    text-transform: uppercase; padding: 1rem 2rem;
+    border: none; cursor: pointer; text-decoration: none; display: inline-block;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: opacity 0.2s;
+  }
+  .btn-dark:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--royal-deep);
+    border-top: 3px solid rgba(245,194,0,0.3);
+    padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-info { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.8; }
+  .footer-info strong { color: rgba(255,255,255,0.7); }
+  .footer-usdot {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+    font-size: 0.85rem; letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-usdot span { color: var(--gold); }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 2rem 1.5rem; }
+    .hero-stats { flex-wrap: wrap; position: relative; }
+    #services, #why, #area, #testimonials, #cta, footer { padding: 4rem 1.5rem; }
+    .why-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .why-graphic { display: none; }
+    #cta { flex-direction: column; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+  .reveal-d4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <svg class="gear-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M43.3 5.7l-3.1 9.5a35.3 35.3 0 0 0-8.8 3.6L21.9 15 12 24.9l3.9 9.5a35.3 35.3 0 0 0-3.6 8.8L2.8 46.7v13.6l9.5 3.1a35.3 35.3 0 0 0 3.6 8.8L12 81.7l9.9 9.9 9.5-3.9c2.8 1.5 5.7 2.7 8.8 3.6l3.1 9.5h13.6l3.1-9.5a35.3 35.3 0 0 0 8.8-3.6l9.5 3.9 9.9-9.9-3.9-9.5a35.3 35.3 0 0 0 3.6-8.8l9.5-3.1V46.7l-9.5-3.1a35.3 35.3 0 0 0-3.6-8.8l3.9-9.5L79 15l-9.5 3.9a35.3 35.3 0 0 0-8.8-3.6L57.6 5.7zM50 33a17 17 0 1 1 0 34 17 17 0 0 1 0-34z"/>
+    </svg>
+    CLEAR <span>&nbsp;SERVICES</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#area">Service Area</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a href="tel:+19195551234" class="nav-cta">📞 Free Quote</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Big watermark gear -->
+  <svg class="gear-bg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+    <path d="M43.3 5.7l-3.1 9.5a35.3 35.3 0 0 0-8.8 3.6L21.9 15 12 24.9l3.9 9.5a35.3 35.3 0 0 0-3.6 8.8L2.8 46.7v13.6l9.5 3.1a35.3 35.3 0 0 0 3.6 8.8L12 81.7l9.9 9.9 9.5-3.9c2.8 1.5 5.7 2.7 8.8 3.6l3.1 9.5h13.6l3.1-9.5a35.3 35.3 0 0 0 8.8-3.6l9.5 3.9 9.9-9.9-3.9-9.5a35.3 35.3 0 0 0 3.6-8.8l9.5-3.1V46.7l-9.5-3.1a35.3 35.3 0 0 0-3.6-8.8l3.9-9.5L79 15l-9.5 3.9a35.3 35.3 0 0 0-8.8-3.6L57.6 5.7zM50 33a17 17 0 1 1 0 34 17 17 0 0 1 0-34z"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span> Newton Grove, NC · USDOT 4294194</div>
+    <h1 class="hero-title">
+      Land Clearing<br>
+      <span class="line2">Done Right.</span>
+    </h1>
+    <div class="gold-bar"></div>
+    <p class="hero-sub">From overgrown lots to construction-ready sites — Clear Services AG, LLC brings heavy-duty equipment and reliable crews to every job in Eastern NC.</p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+
+  <!-- Excavator illustration -->
+  <div style="position:absolute;right:3%;bottom:80px;z-index:2;opacity:0.92;animation:fadeUp 0.9s 0.4s ease both;">
+    <svg viewBox="0 0 320 220" width="340" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <!-- Undercarriage tracks -->
+      <rect x="30" y="168" width="200" height="28" rx="14" fill="#f5c200"/>
+      <rect x="38" y="172" width="184" height="20" rx="10" fill="#d4a700"/>
+      <circle cx="50" cy="182" r="12" fill="#f5c200" stroke="#d4a700" stroke-width="2"/>
+      <circle cx="210" cy="182" r="12" fill="#f5c200" stroke="#d4a700" stroke-width="2"/>
+      <circle cx="110" cy="186" r="8" fill="#d4a700"/>
+      <circle cx="150" cy="186" r="8" fill="#d4a700"/>
+      <!-- Body/cab -->
+      <rect x="60" y="115" width="130" height="55" rx="6" fill="#f5c200"/>
+      <rect x="70" y="120" width="80" height="44" rx="4" fill="#1a4fbb"/>
+      <!-- Cab window -->
+      <rect x="75" y="124" width="68" height="34" rx="3" fill="rgba(255,255,255,0.25)"/>
+      <!-- Arm base -->
+      <rect x="168" y="105" width="18" height="60" rx="4" fill="#d4a700" transform="rotate(-15 177 135)"/>
+      <!-- Arm mid -->
+      <rect x="195" y="65" width="14" height="60" rx="4" fill="#f5c200" transform="rotate(-35 202 95)"/>
+      <!-- Arm forearm -->
+      <rect x="228" y="28" width="12" height="55" rx="4" fill="#d4a700" transform="rotate(-65 234 55)"/>
+      <!-- Bucket -->
+      <path d="M252 10 L275 22 L268 45 L245 38 Z" fill="#f5c200" stroke="#d4a700" stroke-width="1.5"/>
+      <path d="M245 38 L268 45 L265 55 L242 48 Z" fill="#d4a700"/>
+      <!-- Teeth -->
+      <line x1="248" y1="52" x2="244" y2="62" stroke="#f5c200" stroke-width="3" stroke-linecap="round"/>
+      <line x1="256" y1="54" x2="253" y2="64" stroke="#f5c200" stroke-width="3" stroke-linecap="round"/>
+      <line x1="264" y1="52" x2="261" y2="62" stroke="#f5c200" stroke-width="3" stroke-linecap="round"/>
+      <!-- Hydraulics -->
+      <line x1="185" y1="110" x2="212" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="215" y1="72" x2="238" y2="40" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-linecap="round"/>
+      <!-- Gold line accent (matches logo) -->
+      <line x1="168" y1="88" x2="255" y2="28" stroke="#f5c200" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Acres Cleared</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">USDOT</div>
+      <div class="stat-label">Licensed & Insured</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Emergency Response</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Our <span class="accent">Services</span></h2>
+  <p class="section-intro">Whether you need a single tree removed or a full site graded for development, we have the equipment and expertise to get the job done on time and on budget.</p>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="svc-num">01</span>
+      <span class="svc-icon">🌲</span>
+      <div class="svc-title">Tree Removal</div>
+      <p class="svc-desc">Safe, efficient removal of trees of any size — from nuisance trees threatening your home to full timber clearing for development projects. Stump grinding available.</p>
+    </div>
+    <div class="service-card reveal reveal-d1">
+      <span class="svc-num">02</span>
+      <span class="svc-icon">🚜</span>
+      <div class="svc-title">Land Clearing</div>
+      <p class="svc-desc">Complete brush, vegetation, and debris clearing for residential lots, commercial sites, agricultural land, and right-of-way projects. We leave your land ready to build.</p>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <span class="svc-num">03</span>
+      <span class="svc-icon">⛰️</span>
+      <div class="svc-title">Grading & Excavation</div>
+      <p class="svc-desc">Precision grading for proper drainage, foundations, driveways, and building pads. Our operators deliver smooth, level results that meet your site specifications.</p>
+    </div>
+    <div class="service-card reveal reveal-d3">
+      <span class="svc-num">04</span>
+      <span class="svc-icon">🪵</span>
+      <div class="svc-title">Brush Mulching</div>
+      <p class="svc-desc">High-production forestry mulching converts overgrown brush and small trees into ground-level mulch — no burning, no hauling. Fast and environmentally responsible.</p>
+    </div>
+    <div class="service-card reveal reveal-d4">
+      <span class="svc-num">05</span>
+      <span class="svc-icon">🏗️</span>
+      <div class="svc-title">Site Preparation</div>
+      <p class="svc-desc">Full-service site prep for new construction: clearing, grubbing, rough grading, and erosion control. We coordinate with your contractor for seamless project flow.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="svc-num">06</span>
+      <span class="svc-icon">🛣️</span>
+      <div class="svc-title">Right-of-Way Clearing</div>
+      <p class="svc-desc">Utility corridors, fence lines, pipeline ROW, and road widening projects — we maintain safe clearances efficiently with minimal environmental impact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="why-inner">
+      <div>
+        <div class="section-label" style="color:var(--gold);">Why Choose Us</div>
+        <h2 class="section-title" style="color:var(--white);">Eastern NC's <span style="color:var(--gold);">Trusted</span> Land Pros</h2>
+        <p style="color:rgba(255,255,255,0.6);margin-bottom:2.5rem;line-height:1.7;">Clear Services AG, LLC was built on a simple promise: show up, work hard, and leave every site cleaner than we found it. Here's what sets us apart.</p>
+        <div class="why-points">
+          <div class="why-point reveal">
+            <div class="why-icon-wrap">⚡</div>
+            <div>
+              <div class="why-point-title">Fast Turnaround</div>
+              <p class="why-point-desc">We mobilize quickly and work efficiently — no multi-week waits. Most residential jobs are completed in a single day.</p>
+            </div>
+          </div>
+          <div class="why-point reveal reveal-d1">
+            <div class="why-icon-wrap">🛡️</div>
+            <div>
+              <div class="why-point-title">Fully Licensed & Insured</div>
+              <p class="why-point-desc">USDOT licensed, fully insured, and compliant with all NC commercial vehicle and contractor regulations. Your property is protected.</p>
+            </div>
+          </div>
+          <div class="why-point reveal reveal-d2">
+            <div class="why-icon-wrap">💬</div>
+            <div>
+              <div class="why-point-title">Honest Pricing</div>
+              <p class="why-point-desc">Free on-site estimates with no surprise charges. We quote the job, we do the job, and we stand behind our work.</p>
+            </div>
+          </div>
+          <div class="why-point reveal reveal-d3">
+            <div class="why-icon-wrap">🏡</div>
+            <div>
+              <div class="why-point-title">Locally Owned & Operated</div>
+              <p class="why-point-desc">Newton Grove born and raised. We know Eastern NC's terrain, soil conditions, and county regulations inside and out.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-graphic reveal">
+        <!-- Decorative angular graphic -->
+        <svg viewBox="0 0 380 380" width="380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5c200" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#f5c200" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="190" cy="190" r="170" fill="url(#glow)"/>
+          <!-- Gear large -->
+          <g transform="translate(190,190)">
+            <animateTransform attributeName="transform" type="rotate" from="0 190 190" to="360 190 190" dur="30s" repeatCount="indefinite"/>
+            <path transform="translate(190,190) scale(2.8)" fill="none" stroke="rgba(245,194,0,0.3)" stroke-width="1.5"
+              d="M-17.3-4.7l-3.8-1a16 16 0 0 0-1.6-3.9l2-3.3-4.7-4.7-3.3 2a16 16 0 0 0-3.9-1.6l-1-3.8h-6.6l-1 3.8a16 16 0 0 0-3.9 1.6l-3.3-2-4.7 4.7 2 3.3a16 16 0 0 0-1.6 3.9l-3.8 1v6.6l3.8 1a16 16 0 0 0 1.6 3.9l-2 3.3 4.7 4.7 3.3-2a16 16 0 0 0 3.9 1.6l1 3.8h6.6l1-3.8a16 16 0 0 0 3.9-1.6l3.3 2 4.7-4.7-2-3.3a16 16 0 0 0 1.6-3.9l3.8-1zm-20.9 8a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/>
+          </g>
+          <!-- Inner rings -->
+          <circle cx="190" cy="190" r="130" fill="none" stroke="rgba(26,79,187,0.4)" stroke-width="1" stroke-dasharray="8 8"/>
+          <circle cx="190" cy="190" r="90" fill="none" stroke="rgba(245,194,0,0.2)" stroke-width="2"/>
+          <!-- Big gear centered -->
+          <g transform="translate(190,190) scale(2.3)">
+            <path fill="rgba(245,194,0,0.15)" stroke="rgba(245,194,0,0.5)" stroke-width="1"
+              d="M-17.3-4.7l-3.8-1a16 16 0 0 0-1.6-3.9l2-3.3-4.7-4.7-3.3 2a16 16 0 0 0-3.9-1.6l-1-3.8h-6.6l-1 3.8a16 16 0 0 0-3.9 1.6l-3.3-2-4.7 4.7 2 3.3a16 16 0 0 0-1.6 3.9l-3.8 1v6.6l3.8 1a16 16 0 0 0 1.6 3.9l-2 3.3 4.7 4.7 3.3-2a16 16 0 0 0 3.9 1.6l1 3.8h6.6l1-3.8a16 16 0 0 0 3.9-1.6l3.3 2 4.7-4.7-2-3.3a16 16 0 0 0 1.6-3.9l3.8-1zm-20.9 8a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/>
+          </g>
+          <!-- Center text -->
+          <text x="190" y="183" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="700" font-size="22" fill="#f5c200">CLEAR</text>
+          <text x="190" y="205" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="400" font-size="12" fill="rgba(255,255,255,0.5)" letter-spacing="4">SERVICES</text>
+          <text x="190" y="222" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="400" font-size="10" fill="rgba(255,255,255,0.35)" letter-spacing="3">AG, LLC</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="area">
+  <div class="section-label">Where We Work</div>
+  <h2 class="section-title" style="text-align:center;">Service <span style="color:var(--gold);">Area</span></h2>
+  <p class="section-intro">Proudly serving communities across Eastern North Carolina. Not sure if we come to you? Just ask — we travel for bigger jobs.</p>
+  <div class="area-tags">
+    <span class="area-tag anchor">Newton Grove, NC</span>
+    <span class="area-tag">Sampson County</span>
+    <span class="area-tag">Johnston County</span>
+    <span class="area-tag">Wayne County</span>
+    <span class="area-tag">Duplin County</span>
+    <span class="area-tag">Clinton</span>
+    <span class="area-tag">Goldsboro</span>
+    <span class="area-tag">Smithfield</span>
+    <span class="area-tag">Benson</span>
+    <span class="area-tag">Mount Olive</span>
+    <span class="area-tag">Warsaw</span>
+    <span class="area-tag">Fayetteville</span>
+    <span class="area-tag">Jacksonville</span>
+    <span class="area-tag">& Surrounding Areas</span>
+  </div>
+  <a href="#cta" class="btn-primary" style="margin:0 auto;display:inline-block;">Check Your Location</a>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" style="color:rgba(255,255,255,0.6);">What Customers Say</div>
+    <h2 class="section-title" style="color:var(--white);margin-bottom:3rem;">5-Star <span style="color:var(--gold);">Reviews</span></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="t-text">"Clear Services cleared over 3 acres for our new home site in Sampson County. They were on time, professional, and left the land exactly how we needed it. Will absolutely use them again."</p>
+        <div class="t-author">— James T., Newton Grove</div>
+      </div>
+      <div class="testimonial-card reveal reveal-d1">
+        <div class="stars">★★★★★</div>
+        <p class="t-text">"Had a massive oak fall during a storm and they came out the next morning. Fast, safe removal and they cleaned up everything. Great local company — couldn't ask for better service."</p>
+        <div class="t-author">— Sandra M., Smithfield</div>
+      </div>
+      <div class="testimonial-card reveal reveal-d2">
+        <div class="stars">★★★★★</div>
+        <p class="t-text">"Used them for a commercial site prep job near Goldsboro. On budget, ahead of schedule, and their operator knew exactly what he was doing. Highly recommend for any size project."</p>
+        <div class="t-author">— Robert K., Wayne County</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta">
+  <div class="cta-text">
+    <div class="cta-title">Ready to Clear<br>Your Land?</div>
+    <div class="cta-sub">Free on-site estimates — no obligation, no pressure.</div>
+  </div>
+  <a href="tel:+19195551234" class="cta-phone">📞 (919) 555-1234</a>
+  <a href="mailto:info@clearservicesag.com" class="btn-dark">Email Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">CLEAR <span>SERVICES</span> AG, LLC</div>
+    <div class="footer-info" style="margin-top:0.5rem;">
+      <strong>Newton Grove, North Carolina</strong><br>
+      Serving Eastern NC since 2014
+    </div>
+  </div>
+  <div class="footer-info" style="text-align:center;">
+    Tree Removal · Land Clearing · Grading<br>
+    Brush Mulching · Site Preparation · ROW Clearing
+  </div>
+  <div class="footer-usdot">USDOT <span>4294194</span><br>Licensed · Insured · Local</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
