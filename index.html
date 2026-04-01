@@ -559,32 +559,6 @@ footer{
 .form-success p{font-size:0.9rem;color:var(--muted);line-height:1.7}
 
 /* ════════════════════════════════
-   PRESENTATION BANNER (internal)
-════════════════════════════════ */
-#pres-banner{
-  position:fixed;bottom:0;left:0;right:0;z-index:500;
-  background:#0d1117;border-top:2px solid #f5c200;
-  padding:0.75rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-}
-#pres-banner p{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:1.5px;color:rgba(255,255,255,0.6)}
-#pres-banner strong{color:#f5c200}
-.pres-steps{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap}
-.pres-step{
-  font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:1.5px;
-  text-transform:uppercase;padding:4px 10px;border-radius:2px;cursor:pointer;
-  border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);
-  transition:all 0.2s;white-space:nowrap;background:none;
-}
-.pres-step:hover,.pres-step.done{border-color:#f5c200;color:#f5c200}
-.pres-close{
-  background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.4);
-  font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:1px;
-  padding:4px 10px;cursor:pointer;transition:all 0.2s;
-}
-.pres-close:hover{border-color:#f5c200;color:#f5c200}
-
-/* ════════════════════════════════
    MOBILE
 ════════════════════════════════ */
 @media(max-width:900px){
@@ -1095,19 +1069,6 @@ footer{
 
 </div><!-- /page-contact -->
 
-<!-- ══════════════ PRESENTATION BANNER ══════════════ -->
-<div id="pres-banner">
-  <p><strong>Internal Review</strong> · Clear Services AG, LLC Website Demo · 3 pages built</p>
-  <div class="pres-steps">
-    <button class="pres-step done" onclick="showPage('home')">① Home</button>
-    <button class="pres-step done" onclick="showPage('services')">② Services</button>
-    <button class="pres-step done" onclick="showPage('contact')">③ Contact & Quote</button>
-    <button class="pres-step" onclick="markDone(this)">④ Client Review</button>
-    <button class="pres-step" onclick="markDone(this)">⑤ Launch</button>
-  </div>
-  <button class="pres-close" onclick="document.getElementById('pres-banner').style.display='none'">Hide</button>
-</div>
-
 <script>
 /* ── Page routing ── */
 function showPage(id){
@@ -1141,9 +1102,6 @@ function submitForm(){
   document.getElementById('form-body').style.display='none';
   document.getElementById('form-success').classList.add('show');
 }
-
-/* ── Presentation steps ── */
-function markDone(el){el.classList.toggle('done')}
 </script>
 </body>
 </html>
